@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>E‑Waste Barter System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo" role="banner">LOGO</div>
+    <div class="profile">
+      <div class="avatar" id="profileAvatar" aria-hidden="true"></div>
+      <div class="username" id="username">Jerbaks</div>
+    </div>
+
+    <div class="search" role="search">
+      <input type="search" placeholder="Search" aria-label="Search navigation items">
+    </div>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a class="nav-item" href="#">Inbox</a>
+      <a class="nav-item" href="#">Settings</a>
+    </nav>
+
+    <div class="categories">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="#telecommunications" class="cat-link">Telecommunications</a></li>
+        <li><a href="#consumer-electronics" class="cat-link">Consumer Electronics</a></li>
+        <li><a href="#toys-leisure" class="cat-link">Toys &amp; Leisure</a></li>
+        <li><a href="#household-appliances" class="cat-link">Household Appliances</a></li>
+        <li><a href="#lighting-equipment" class="cat-link">Lighting Equipment</a></li>
+        <li><a href="#others" class="cat-link">Others</a></li>
+      </ul>
+    </div>
+
+  <!-- logout removed as requested -->
+  </aside>
+
+  <main class="main">
+    <section class="today">
+      <h2>New for you</h2>
+      <div class="card">
+        <div class="card-avatar round">
+          <img src="pic.png" alt="avatar">
+        </div>
+        <div class="card-info">
+          <div class="title">AMBASSING</div>
+          <div class="meta">Agdao, Davao City</div>
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- Multiple category sections: each section represents a marketplace category.
+         When the page is scrolled, the user will move through these stacked sections.
+         Each section contains a grid of cards; each card has a "Trade!" button. -->
+
+    <section class="category" id="telecommunications">
+      <h2>Telecommunications</h2>
+      <div class="card-grid">
+        <!-- Example card -->
+        <article class="card small">
+          <div class="card-avatar round">
+            <img src="pic.png" alt="telecom item">
+          </div>
+          <div class="card-info">
+            <div class="title">AMBATUKAM</div>
+            <div class="meta">Nabunturan, Davao City</div>
+            <div class="card-actions">
+              <button class="btn-trade" onclick="window.location.href='Trade.html'">Trade!</button>
+            </div>
+          </div>
+        </article>
+        <!-- Duplicate/replace items as needed -->
+      </div>
+    </section>
+
+    <section class="category" id="consumer-electronics">
+      <h2>Consumer Electronics</h2>
+      <div class="card-grid">
+        <article class="card small">
+          <div class="card-avatar round">
+            <img src="assets/avatar1.png" alt="electronics item">
+          </div>
+          <div class="card-info">
+            <div class="title">Old Phone</div>
+            <div class="meta">Zone 3, City</div>
+            <div class="card-actions">
+              <button class="btn-trade" onclick="window.location.href='Trade.html'">Trade!</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="category" id="toys-leisure">
+      <h2>Toys &amp; Leisure</h2>
+      <div class="card-grid">
+        <article class="card small">
+          <div class="card-avatar round">
+            <img src="assets/avatar2.png" alt="toy item">
+          </div>
+          <div class="card-info">
+            <div class="title">Game Console</div>
+            <div class="meta">Barangay, Town</div>
+            <div class="card-actions">
+              <button class="btn-trade" onclick="window.location.href='Trade.html'">Trade!</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="category" id="household-appliances">
+      <h2>Household Appliances</h2>
+      <div class="card-grid">
+        <article class="card small">
+          <div class="card-avatar round">
+            <img src="assets/avatar1.png" alt="fan">
+          </div>
+          <div class="card-info">
+            <div class="title">Ceiling Fan</div>
+            <div class="meta">Poblacion, City</div>
+            <div class="card-actions">
+            <button class="btn-trade" onclick="window.location.href='Trade.html'">Trade!</button>
+        </div>
+
+          </div>
+        </article>
+        <article class="card small">
+          <div class="card-avatar round">
+            <img src="assets/avatar2.png" alt="kettle">
+          </div>
+          <div class="card-info">
+            <div class="title">Electric Kettle</div>
+            <div class="meta">Brgy. 5</div>
+            <button class="btn-trade" onclick="window.location.href='Trade.html'">Trade!</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="category" id="lighting-equipment">
+      <h2>Lighting Equipment</h2>
+      <div class="card-grid">
+        <article class="card small">
+          <div class="card-avatar round">
+            <img src="pic.png" alt="led lamp">
+          </div>
+          <div class="card-info">
+            <div class="title">LED Lamp</div>
+            <div class="meta">Zone A</div>
+            <div class="card-actions"><button class="btn-trade">Trade!</button></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="category" id="others">
+      <h2>Others</h2>
+      <div class="card-grid">
+        <article class="card small">
+          <div class="card-avatar round">
+            <img src="assets/avatar1.png" alt="misc">
+          </div>
+          <div class="card-info">
+            <div class="title">Mixed Parts</div>
+            <div class="meta">Central Market</div>
+            <div class="card-actions"><button class="btn-trade">Trade!</button></div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

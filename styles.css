@@ -1,0 +1,247 @@
+/* -------------------------------------------------- */
+/* E‑Waste Barter System - Beginner-friendly styles */
+/* -------------------------------------------------- */
+
+/* Color variables based on the palette you provided (dark -> light)
+   #0F2A1D, #375534, #6B9071, #AEC3B0, #E3EED4 */
+:root {
+  --green-900: #0F2A1D; /* darkest */
+  --green-700: #375534;
+  --green-500: #6B9071; /* primary mid */
+  --green-300: #AEC3B0;
+  --green-100: #E3EED4; /* lightest */
+
+  /* Semantic variables used throughout the stylesheet */
+  --sidebar-bg: var(--green-900);
+  --accent: var(--green-500);
+  --card-bg: var(--green-700);
+  --main-bg: var(--green-100);
+  --text: #07221a; /* dark text for contrast on light backgrounds */
+}
+
+/* Use a simpler reset so box sizes are predictable */
+* { box-sizing: border-box; }
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, 'Segoe UI', Roboto, Arial, sans-serif;
+  color: var(--text);
+}
+
+/* Layout: sidebar on the left, content on the right */
+body {
+  display: flex;
+  /* subtle vertical gradient using palette colors */
+  background: linear-gradient(180deg, var(--green-300), var(--green-100));
+}
+
+/* -------------------- Sidebar -------------------- */
+.sidebar {
+  width: 260px;
+  background: var(--sidebar-bg);
+  color: white;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.logo {
+  font-weight: 700;
+  letter-spacing: 2px;
+  border-bottom: 3px solid rgba(255,255,255,0.08);
+  padding-bottom: 10px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Small circular avatar in the sidebar */
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  /* small gradient that fits the green theme */
+  background: linear-gradient(135deg, var(--accent), var(--green-700));
+}
+
+.username { opacity: 0.9; }
+
+.search input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 24px;
+  border: none;
+}
+
+.nav { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
+.nav-item {
+  color: inherit;
+  text-decoration: none;
+  padding: 8px 6px;
+  border-radius: 6px;
+}
+.nav-item:hover { background: rgba(255,255,255,0.04); }
+
+.categories { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 12px; }
+.categories h4 { margin: 6px 0 8px; font-size: 14px; }
+.categories ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 13px; color: #ddd; }
+
+.logout {
+  margin-top: auto;
+  padding: 10px;
+  border-radius: 28px;
+  border: none;
+  background: var(--green-300);
+  color: var(--green-900);
+  font-weight: 600;
+}
+
+/* -------------------- Main content -------------------- */
+.main {
+  flex: 1; /* take remaining width */
+  padding: 36px 48px;
+  overflow: auto;
+  /* gentle background that reads as a soft green paper */
+  background: linear-gradient(180deg, var(--green-300), var(--green-100));
+}
+
+.today h2, .category-list h2 { font-weight: 700; margin: 6px 0 12px; }
+
+/* -------------------- Card (item) styles -------------------- */
+/* Card is a small box showing avatar + info */
+.card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 14px;
+  background: var(--card-bg);
+  width: 280px;
+  border-radius: 26px;
+  box-shadow: 0 6px 0 rgba(0,0,0,0.12);
+  min-height: 100px;
+}
+
+/* Smaller variant used in the list */
+.card.small { width: 240px; }
+
+/* Avatar box: fixed square with rounded corners */
+.card-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 20px;
+  overflow: hidden; /* hides any part of the image that sticks out */
+  flex: 0 0 88px; /* prevents the avatar from growing or shrinking */
+  background: var(--green-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-avatar.round { border-radius: 22px; }
+
+/* Make images fill the avatar box without distortion */
+.card-avatar img {
+  width: 100%;
+  height: 100%;
+  display: block;          /* removes small inline-gap below images */
+  object-fit: cover;      /* crops the image but preserves aspect ratio */
+}
+
+/* Ensure the text area inside the flex card can shrink properly */
+.card .card-info { min-width: 0; }
+
+/* Title and meta text inside a card */
+.card .title {
+  /* allow long words to wrap instead of pushing the card wider */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.card .meta {
+  color: rgba(255,255,255,0.95);
+  font-size: 13px;
+  margin-top: 6px;
+  white-space: normal;
+}
+
+/* Uncomment this block if you prefer titles to stay on one line and be truncated */
+/*
+.card .title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+*/
+
+/* Divider line */
+hr {
+  border: none;
+  border-top: 3px solid rgba(0,0,0,0.18);
+  margin: 26px 0;
+  width: 100%;
+}
+
+/* -------------------- Responsive tweaks -------------------- */
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  body { flex-direction: column; }
+  .main { padding: 18px; }
+}
+
+/* End of file */
+
+/* -------------------- Category grid & buttons -------------------- */
+/* A responsive grid for cards inside each category */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 18px;
+  align-items: start;
+  margin-bottom: 18px;
+}
+
+/* Button used to start a trade */
+.btn-trade {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: linear-gradient(90deg, var(--green-500), var(--green-300));
+  color: var(--green-900);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.btn-trade:hover,
+.btn-trade:focus {
+  outline: none;
+  filter: brightness(0.95);
+}
+
+/* Small helper to align actions inside the card */
+.card-actions { margin-top: 8px; }
+
+/* Sidebar category link styles */
+.cat-link {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+  padding: 4px 6px;
+  border-radius: 6px;
+}
+.cat-link:hover, .cat-link:focus {
+  background: rgba(255,255,255,0.04);
+}
+
+/* Make anchor clicks smooth when jumping to sections */
+html { scroll-behavior: smooth; }
+
