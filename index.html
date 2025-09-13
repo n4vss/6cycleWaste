@@ -1,181 +1,275 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>E‑Waste Barter System</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <aside class="sidebar">
-    <div class="logo" role="banner">LOGO</div>
-    <div class="profile">
-      <div class="avatar" id="profileAvatar" aria-hidden="true"></div>
-      <div class="username" id="username">Jerbaks</div>
-    </div>
-
-    <div class="search" role="search">
-      <input type="search" placeholder="Search" aria-label="Search navigation items">
-    </div>
-
-    <nav class="nav" aria-label="Main navigation">
-      <a class="nav-item" href="#">Inbox</a>
-      <a class="nav-item" href="#">Settings</a>
-    </nav>
-
-    <div class="categories">
-      <h4>Categories</h4>
-      <ul>
-        <li><a href="#telecommunications" class="cat-link">Telecommunications</a></li>
-        <li><a href="#consumer-electronics" class="cat-link">Consumer Electronics</a></li>
-        <li><a href="#toys-leisure" class="cat-link">Toys &amp; Leisure</a></li>
-        <li><a href="#household-appliances" class="cat-link">Household Appliances</a></li>
-        <li><a href="#lighting-equipment" class="cat-link">Lighting Equipment</a></li>
-        <li><a href="#others" class="cat-link">Others</a></li>
-      </ul>
-    </div>
-
-  <!-- logout removed as requested -->
-  </aside>
-
-  <main class="main">
-    <section class="today">
-      <h2>New for you</h2>
-      <div class="card">
-        <div class="card-avatar round">
-          <img src="pic.png" alt="avatar">
-        </div>
-        <div class="card-info">
-          <div class="title">AMBASSING</div>
-          <div class="meta">Agdao, Davao City</div>
-        </div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Home | 6cycleWaste</title>
+    <link rel="icon" type="image/x-icon" href="assets/icon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header sticky-header">
+      <div class="container header-inner">
+        <a href="index.html">
+          <h1 class="logo"><img src="assets/logo.png" alt="6cycleWaste" /></h1>
+        </a>
+        <nav class="main-nav" id="main-nav">
+          <a href="index.html" class="active">Home</a>
+          <a href="marketplace.html">Marketplace</a>
+          <a href="signIn.html">Post Item</a>
+          <a href="signUp.html">Create an Account</a>
+        </nav>
+        <!-- Hamburger Icon for mobile -->
+        <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
-    </section>
+    </header>
 
-    <hr>
-
-    <!-- Multiple category sections: each section represents a marketplace category.
-         When the page is scrolled, the user will move through these stacked sections.
-         Each section contains a grid of cards; each card has a "Trade!" button. -->
-
-    <section class="category" id="telecommunications">
-      <h2>Telecommunications</h2>
-      <div class="card-grid">
-        <!-- Example card -->
-        <article class="card small">
-          <div class="card-avatar round">
-            <img src="pic.png" alt="telecom item">
+    <main>
+      <!-- Hero -->
+      <section class="hero">
+        <div class="overlay"></div>
+        <div class="floating-leaves" aria-hidden="true"></div>
+        <div class="container hero-inner">
+          <h2 class="hero-title">Barter Your Old Tech, Save the Planet</h2>
+          <p class="hero-sub">
+            A community-driven way to reduce e-waste by trading gadgets instead
+            of throwing them away.
+          </p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="marketplace.html">Browse Items</a>
           </div>
-          <div class="card-info">
-            <div class="title">AMBATUKAM</div>
-            <div class="meta">Nabunturan, Davao City</div>
-            <div class="card-actions">
-              <button class="btn-trade" onclick="window.location.href='Trade.html'">Trade!</button>
+        </div>
+      </section>
+
+      <!-- About / Why Choose (glass panel) -->
+      <section class="about container">
+        <div class="panel">
+          <h2>Why Choose 6cycleWaste?</h2>
+          <p>
+            Electronic waste is one of the fastest-growing problems in the world. Old phones, laptops, and gadgets often end up in landfills, causing pollution and wasting valuable resources. Our platform helps people give their devices a second life — through bartering, not dumping.
+          </p>
+        </div>
+      </section>
+	  
+	  <!-- Why Barter / Impact -->
+      <section class="impact container">
+        
+        <div class="three-col">
+          <div class="impact-card">
+            <div class="impact-icon">♻️</div>
+            <h4>Reduce E-Waste</h4>
+            <p>Keep gadgets out of landfills.</p>
+          </div>
+          <div class="impact-card">
+            <div class="impact-icon">🌱</div>
+            <h4>Promote Sustainability</h4>
+            <p>Extend tech lifespan.</p>
+          </div>
+          <div class="impact-card">
+            <div class="impact-icon">🤝</div>
+            <h4>Save & Share</h4>
+            <p>Trade instead of buying new.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Items -->
+      <section class="featured container">
+        <h3 class="section-title">Featured Items</h3>
+        <p class="muted">
+          A preview of recent swaps happening in the community.
+        </p>
+        <div class="cards-grid">
+          <article class="card">
+            <img
+              src="assets/cp.jpg"
+              alt="Phone"
+            />
+            <div class="card-body">
+              <h4>Smartphone —Good Condition</h4>
+              <p>Unlocked phone, minor scratch on back, works perfectly.</p>
+              <a class="btn btn-sm btn-primary" href="signIn.html">Swap Now</a>
+            </div>
+          </article>
+          <article class="card">
+            <img
+              src="assets/laptop.webp"
+              alt="Laptop"
+            />
+            <div class="card-body">
+              <h4>13" Laptop — Used</h4>
+              <p>Lightweight laptop, 8GB RAM, ideal for students.</p>
+              <a class="btn btn-sm btn-primary" href="signIn.html">Swap Now</a>
+            </div>
+          </article>
+          <article class="card">
+            <img
+              src="assets/charger.jpg"
+              alt="Charger"
+            />
+            <div class="card-body">
+              <h4>Fast Charger</h4>
+              <p>USB-C PD charger, 30W — works with most phones.</p>
+              <a class="btn btn-sm btn-primary" href="signIn.html">Swap Now</a>
+            </div>
+          </article>
+          <article class="card">
+            <img
+              src="assets/tab.jpg"
+              alt="Tablet"
+            />
+            <div class="card-body">
+              <h4>Tablet — Screen Good</h4>
+              <p>10" tablet, great for reading and media.</p>
+              <a class="btn btn-sm btn-primary" href="signIn.html">Swap Now</a>
+            </div>
+          </article>
+          <article class="card">
+            <img
+              src="assets/crt.jpg"
+              alt="Tablet"
+            />
+            <div class="card-body">
+              <h4>CRT Monitor</h4>
+              <p>Old, bulky screen; still works, great for retro gaming.</p>
+              <a class="btn btn-sm btn-primary" href="signIn.html">Swap Now</a>
+            </div>
+          </article>
+          <article class="card">
+            <img
+              src="assets/printer.jpg"
+              alt="Tablet"
+            />
+            <div class="card-body">
+              <h4>Inkjet Printer</h4>
+              <p>Old, often jams; parts like motor & power supply still usable.</p>
+              <a class="btn btn-sm btn-primary" href="signIn.html">Swap Now</a>
+            </div>
+          </article>
+          <article class="card">
+            <img
+              src="assets/hp.jpg"
+              alt="Headphones"
+            />
+            <div class="card-body">
+              <h4>Wireless Headphones</h4>
+              <p>Comfortable, 20h battery life, case included.</p>
+              <a class="btn btn-sm btn-primary" href="signIn.html">Swap Now</a>
+            </div>
+          </article>
+          <article class="card">
+            <img
+              src="assets/cam.jpg"
+              alt="Camera"
+            />
+            <div class="card-body">
+              <h4>Compact Camera</h4>
+              <p>Good for beginners, includes SD card and strap.</p>
+              <a class="btn btn-sm btn-primary" href="signIn.html">Swap Now</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Testimonial / Swap Stories -->
+      <section class="testimonials container">
+        <h3 class="section-title">Swap Stories</h3>
+        <div class="test-grid" id="test-grid">
+          <!-- initial placeholders replaced with nicer layout and avatars -->
+          <div class="test-card reveal visible">
+            <div class="test-avatar">
+              <img
+                src="https://ui-avatars.com/api/?name=Alex&background=2ecc71&color=fff&rounded=true&size=64"
+                alt="Alex"
+              />
+            </div>
+            <div class="test-content">
+              <p class="quote">
+                "I swapped my old phone and it still works great — saved money
+                and helped someone in need."
+              </p>
+              <div class="meta">— Alex · Phone swap</div>
+              <div class="ts">just now</div>
             </div>
           </div>
-        </article>
-        <!-- Duplicate/replace items as needed -->
-      </div>
-    </section>
-
-    <section class="category" id="consumer-electronics">
-      <h2>Consumer Electronics</h2>
-      <div class="card-grid">
-        <article class="card small">
-          <div class="card-avatar round">
-            <img src="assets/avatar1.png" alt="electronics item">
-          </div>
-          <div class="card-info">
-            <div class="title">Old Phone</div>
-            <div class="meta">Zone 3, City</div>
-            <div class="card-actions">
-              <button class="btn-trade" onclick="window.location.href='Trade.html'">Trade!</button>
+          <div class="test-card reveal visible">
+            <div class="test-avatar">
+              <img
+                src="https://ui-avatars.com/api/?name=Priya&background=2ecc71&color=fff&rounded=true&size=64"
+                alt="Priya"
+              />
+            </div>
+            <div class="test-content">
+              <p class="quote">
+                "Fast and friendly — posted a charger and got an offer within a
+                day."
+              </p>
+              <div class="meta">— Priya · Charger swap</div>
+              <div class="ts">1d ago</div>
             </div>
           </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="category" id="toys-leisure">
-      <h2>Toys &amp; Leisure</h2>
-      <div class="card-grid">
-        <article class="card small">
-          <div class="card-avatar round">
-            <img src="assets/avatar2.png" alt="toy item">
-          </div>
-          <div class="card-info">
-            <div class="title">Game Console</div>
-            <div class="meta">Barangay, Town</div>
-            <div class="card-actions">
-              <button class="btn-trade" onclick="window.location.href='Trade.html'">Trade!</button>
+          <div class="test-card reveal visible">
+            <div class="test-avatar">
+              <img
+                src="https://ui-avatars.com/api/?name=Sam&background=2ecc71&color=fff&rounded=true&size=64"
+                alt="Sam"
+              />
+            </div>
+            <div class="test-content">
+              <p class="quote">
+                "Clean process and helpful community. Highly recommend bartering
+                here."
+              </p>
+              <div class="meta">— Sam · Laptop swap</div>
+              <div class="ts">2d ago</div>
             </div>
           </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="category" id="household-appliances">
-      <h2>Household Appliances</h2>
-      <div class="card-grid">
-        <article class="card small">
-          <div class="card-avatar round">
-            <img src="assets/avatar1.png" alt="fan">
-          </div>
-          <div class="card-info">
-            <div class="title">Ceiling Fan</div>
-            <div class="meta">Poblacion, City</div>
-            <div class="card-actions">
-            <button class="btn-trade" onclick="window.location.href='Trade.html'">Trade!</button>
         </div>
+      </section>
 
-          </div>
-        </article>
-        <article class="card small">
-          <div class="card-avatar round">
-            <img src="assets/avatar2.png" alt="kettle">
-          </div>
-          <div class="card-info">
-            <div class="title">Electric Kettle</div>
-            <div class="meta">Brgy. 5</div>
-            <button class="btn-trade" onclick="window.location.href='Trade.html'">Trade!</button>
-          </div>
-        </article>
+      <!-- Join Us CTA -->
+      <section class="join-cta">
+        <div class="container cta-inner">
+          <h3>
+            Join the movement. Start bartering today and help save the Earth!
+          </h3>
+          <a class="btn btn-primary btn-xl" href="signIn.html">Get Started</a>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer" class="site-footer">
+        <div class="footer-note">
+         ©6cycleWaste: E-waste barter 2024. All rights reserved.
+        </div>
       </div>
-    </section>
+    </footer>
+    <script>
+  // Responsive menu toggle
+  const menuToggle = document.getElementById('menu-toggle');
+  const mainNav = document.getElementById('main-nav');
+  menuToggle.addEventListener('click', () => {
+    mainNav.classList.toggle('open');
+    menuToggle.classList.toggle('open');
+  });
 
-    <section class="category" id="lighting-equipment">
-      <h2>Lighting Equipment</h2>
-      <div class="card-grid">
-        <article class="card small">
-          <div class="card-avatar round">
-            <img src="pic.png" alt="led lamp">
-          </div>
-          <div class="card-info">
-            <div class="title">LED Lamp</div>
-            <div class="meta">Zone A</div>
-            <div class="card-actions"><button class="btn-trade">Trade!</button></div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="category" id="others">
-      <h2>Others</h2>
-      <div class="card-grid">
-        <article class="card small">
-          <div class="card-avatar round">
-            <img src="assets/avatar1.png" alt="misc">
-          </div>
-          <div class="card-info">
-            <div class="title">Mixed Parts</div>
-            <div class="meta">Central Market</div>
-            <div class="card-actions"><button class="btn-trade">Trade!</button></div>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <script src="script.js"></script>
-</body>
+  // Sticky header shadow on scroll
+  const header = document.querySelector('.sticky-header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+</script>
+  </body>
 </html>

@@ -1,247 +1,765 @@
-/* -------------------------------------------------- */
-/* E‑Waste Barter System - Beginner-friendly styles */
-/* -------------------------------------------------- */
-
-/* Color variables based on the palette you provided (dark -> light)
-   #0F2A1D, #375534, #6B9071, #AEC3B0, #E3EED4 */
+/* Palette and typography per dark neon style */
 :root {
-  --green-900: #0F2A1D; /* darkest */
-  --green-700: #375534;
-  --green-500: #6B9071; /* primary mid */
-  --green-300: #AEC3B0;
-  --green-100: #E3EED4; /* lightest */
-
-  /* Semantic variables used throughout the stylesheet */
-  --sidebar-bg: var(--green-900);
-  --accent: var(--green-500);
-  --card-bg: var(--green-700);
-  --main-bg: var(--green-100);
-  --text: #07221a; /* dark text for contrast on light backgrounds */
+  --primary: #00e676;
+  /* neon green */
+  --accent: #00c853;
+  /* darker neon */
+  --white: #eafff0;
+  /* soft mint for highlights */
+  --bg-deep: #041a12;
+  /* deep green/near-black base */
+  --text: #e6fff2;
+  /* readable light text */
+  --muted-text: rgba(230, 255, 240, 0.72);
+  --card-bg: rgba(6, 20, 14, 0.6);
+  --shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
 }
 
-/* Use a simpler reset so box sizes are predictable */
-* { box-sizing: border-box; }
-html, body {
-  height: 100%;
-  margin: 0;
-  font-family: Inter, 'Segoe UI', Roboto, Arial, sans-serif;
-  color: var(--text);
+* {
+  box-sizing: border-box;
 }
 
-/* Layout: sidebar on the left, content on the right */
+html,
 body {
-  display: flex;
-  /* subtle vertical gradient using palette colors */
-  background: linear-gradient(180deg, var(--green-300), var(--green-100));
+  height: 100%;
 }
 
-/* -------------------- Sidebar -------------------- */
-.sidebar {
-  width: 260px;
-  background: var(--sidebar-bg);
-  color: white;
-  padding: 28px 20px;
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: Roboto, system-ui, -apple-system, "Segoe UI", Arial;
+  line-height: 1.6;
+  background-color: var(--bg-deep);
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(0, 230, 118, 0.04), transparent 8%),
+    radial-gradient(circle at 82% 82%, rgba(0, 200, 110, 0.02), transparent 12%),
+    linear-gradient(180deg, #031e15 0%, #05281b 45%, #02160f 100%);
+  background-attachment: fixed;
+}
+
+/* subtle neon vignette/texture so the background isn't flat */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(circle at 90% 10%, rgba(0, 200, 120, 0.03), transparent 12%),
+    radial-gradient(circle at 10% 90%, rgba(0, 200, 120, 0.02), transparent 12%);
+  mix-blend-mode: overlay;
+  opacity: 0.95;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+.site-header {
+  background: linear-gradient(90deg, rgba(3, 18, 14, 0.92), rgba(6, 30, 22, 0.98));
+  padding: 14px 0;
+  position: relative;
+  z-index: 20;
+  color: var(--white);
+  border-bottom: 1px solid rgba(46, 204, 113, 0.04);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.55), 0 0 24px rgba(0, 230, 118, 0.03) inset;
+}
+
+.header-inner {
   display: flex;
-  flex-direction: column;
-  gap: 18px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
 }
 
 .logo {
+  margin: 0;
+  color: var(--white);
   font-weight: 700;
-  letter-spacing: 2px;
-  border-bottom: 3px solid rgba(255,255,255,0.08);
-  padding-bottom: 10px;
+  font-family: Poppins, sans-serif;
 }
 
-.profile {
+.logo img {
+  display: block;
+  width: 140px;
+  height: auto;
+  object-fit: contain;
+}
+
+.main-nav {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: rgba(230, 255, 240, 0.9);
+  font-weight: 500;
+}
+
+.main-nav a.active {
+  color: var(--white);
+  font-weight: 700;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  padding: 80px 0;
   display: flex;
   align-items: center;
+  min-height: 580px;
+  background: linear-gradient(135deg, rgba(2, 36, 28, 0.64), rgba(4, 28, 22, 0.48));
+  color: var(--white);
+  overflow: hidden;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 14px 48px rgba(0, 0, 0, 0.6), 0 0 34px rgba(0, 200, 110, 0.04) inset;
+}
+
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(60% 60% at 50% 20%, rgba(0, 230, 118, 0.03), transparent 30%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.06));
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.hero-title {
+  font-family: Poppins, sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+  line-height: 1.02;
+}
+
+.hero-sub {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.95);
+  max-width: 820px;
+  margin: 0 auto 22px;
+}
+
+/* Buttons (rounded, hover glow) */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform .25s ease, box-shadow .25s ease, background .15s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, rgba(0, 230, 118, 1), rgba(0, 200, 110, 1));
+  color: var(--white);
+  box-shadow: 0 10px 30px rgba(0, 200, 110, 0.18), 0 0 18px rgba(0, 230, 118, 0.06) inset;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, rgba(0, 250, 140, 1), rgba(0, 220, 120, 1));
+  box-shadow: 0 18px 44px rgba(0, 200, 110, 0.36), 0 0 28px rgba(0, 240, 140, 0.12);
+  transform: translateY(-4px) scale(1.03);
+}
+
+.btn-sm {
+  padding: 8px 12px;
+  border-radius: 12px;
+}
+
+.btn-xl {
+  margin-top: 25px;
+  padding: 14px 26px;
+  border-radius: 30px;
+  font-weight: 700;
+}
+
+/* Impact / Why Barter */
+.impact {
+  padding: 56px 20px;
+  background: linear-gradient(180deg, rgba(3, 12, 9, 0.12), rgba(3, 12, 9, 0.04));
+}
+
+.section-title {
+  font-size: 1.4rem;
+  margin-bottom: 14px;
+  color: var(--white);
+  font-family: Poppins, sans-serif;
+}
+
+.three-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.impact-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 22px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 0 18px rgba(0, 230, 118, 0.02) inset;
+  transition: transform .3s ease;
+  color: var(--text);
+}
+
+.impact-card:hover {
+  transform: translateY(-6px);
+}
+
+.impact-icon {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.impact-card h4 {
+  margin: 6px 0;
+}
+
+.impact-card p {
+  color: var(--muted-text);
+  margin: 0;
+}
+
+/* Featured Items */
+.featured {
+  padding: 36px 20px;
+  background: transparent;
+}
+
+.muted {
+  color: var(--muted-text);
+  margin-bottom: 12px;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.6), 0 0 22px rgba(0, 200, 110, 0.02) inset;
+  display: flex;
+  flex-direction: column;
+  transition: transform .24s ease;
+  color: var(--text);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-body h4 {
+  margin: 0;
+  font-family: Poppins, sans-serif;
+}
+
+.card-body p {
+  margin: 0;
+  color: var(--muted-text);
+}
+
+/* Make all card buttons equal width and aligned */
+.cards-grid .btn {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  margin-top: 16px;
+  min-width: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Optional: Ensure card-body fills height for alignment */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-body h4,
+.card-body p {
+  margin-bottom: 8px;
+}
+
+.card-body .btn {
+  margin-top: auto;
+}
+
+/* Eco Tips Carousel */
+.tips {
+  padding: 28px 20px;
+}
+
+.carousel {
+  background: linear-gradient(90deg, rgba(0, 230, 118, 0.12), rgba(0, 200, 110, 0.08));
+  border-radius: 40px;
+  padding: 10px;
+  overflow: hidden;
+  color: var(--white);
+  box-shadow: 0 8px 24px rgba(46, 204, 113, 0.12);
+}
+
+.slides {
+  display: flex;
+  flex-direction: row;
+  width: 400%;
+  animation: slide 20s ease-in-out infinite;
+}
+
+.slide {
+  flex: 1 0 100%;
+  padding: 20px;
+  font-weight: 600;
+  text-align: center;
+  font-family: Poppins, sans-serif;
+  font-size: 1.1rem;
+  color: #f7fff7;
+}
+
+@keyframes slide {
+
+  0%,
+  18% {
+    transform: translateX(0);
+  }
+
+  25%,
+  43% {
+    transform: translateX(-100%);
+  }
+
+  50%,
+  68% {
+    transform: translateX(-200%);
+  }
+
+  75%,
+  100% {
+    transform: translateX(-300%);
+  }
+}
+
+/* Join CTA */
+.join-cta {
+  background: linear-gradient(90deg, rgba(0, 200, 118, 0.12), rgba(0, 150, 90, 0.06));
+  padding: 46px 20px;
+  margin-top: 18px;
+  color: var(--white);
+  border: 1px solid rgba(80, 255, 150, 0.03);
+}
+
+.cta-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.join-cta h3 {
+  font-size: 1.6rem;
+  margin: 0;
+  font-family: Poppins, sans-serif;
+}
+
+/* Footer */
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px 0;
+  background: linear-gradient(90deg, rgba(2, 16, 12, 0.95), rgba(4, 24, 16, 0.98));
+  color: var(--white);
+  border-top: 1px solid rgba(80, 255, 150, 0.03);
+  box-shadow: 0 -6px 36px rgba(0, 0, 0, 0.5), 0 0 18px rgba(0, 200, 110, 0.02) inset;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 12px;
 }
 
-/* Small circular avatar in the sidebar */
-.avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  /* small gradient that fits the green theme */
-  background: linear-gradient(135deg, var(--accent), var(--green-700));
-}
-
-.username { opacity: 0.9; }
-
-.search input {
-  width: 100%;
-  padding: 12px;
-  border-radius: 24px;
-  border: none;
-}
-
-.nav { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
-.nav-item {
-  color: inherit;
+.footer-links a {
+  color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
-  padding: 8px 6px;
-  border-radius: 6px;
-}
-.nav-item:hover { background: rgba(255,255,255,0.04); }
-
-.categories { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 12px; }
-.categories h4 { margin: 6px 0 8px; font-size: 14px; }
-.categories ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 13px; color: #ddd; }
-
-.logout {
-  margin-top: auto;
-  padding: 10px;
-  border-radius: 28px;
-  border: none;
-  background: var(--green-300);
-  color: var(--green-900);
-  font-weight: 600;
+  margin-right: 18px;
 }
 
-/* -------------------- Main content -------------------- */
-.main {
-  flex: 1; /* take remaining width */
-  padding: 36px 48px;
-  overflow: auto;
-  /* gentle background that reads as a soft green paper */
-  background: linear-gradient(180deg, var(--green-300), var(--green-100));
+.footer-links a:hover {
+  color: var(--primary);
 }
 
-.today h2, .category-list h2 { font-weight: 700; margin: 6px 0 12px; }
+.footer-note {
+  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.85);
+}
 
-/* -------------------- Card (item) styles -------------------- */
-/* Card is a small box showing avatar + info */
-.card {
+/* Floating leaves (neon tint) */
+.floating-leaves {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-leaves::before,
+.floating-leaves::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle at 30% 30%, rgba(0, 230, 118, 0.08), transparent 40%);
+  border-radius: 50%;
+  left: -40px;
+  bottom: -40px;
+  transform: rotate(12deg);
+  opacity: 0.6;
+}
+
+.floating-leaves::after {
+  width: 160px;
+  height: 160px;
+  right: -30px;
+  top: -30px;
+  left: auto;
+  bottom: auto;
+  opacity: 0.55;
+  box-shadow: 0 10px 40px rgba(0, 200, 110, 0.06);
+}
+
+/* Responsive */
+@media(max-width:900px) {
+  .three-col {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 64px 0;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .slides {
+    animation: none;
+  }
+
+  .card,
+  .impact-card {
+    transition: none;
+  }
+}
+
+/* Impact Counters */
+.counters {
   display: flex;
+  gap: 20px;
+  justify-content: center;
   align-items: center;
-  gap: 18px;
-  padding: 14px;
-  background: var(--card-bg);
-  width: 280px;
-  border-radius: 26px;
-  box-shadow: 0 6px 0 rgba(0,0,0,0.12);
-  min-height: 100px;
+  padding: 18px 0;
 }
 
-/* Smaller variant used in the list */
-.card.small { width: 240px; }
+.counter-card {
+  background: linear-gradient(180deg, rgba(3, 12, 9, 0.94), rgba(6, 20, 14, 0.92));
+  padding: 22px 28px;
+  border-radius: 12px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6), 0 0 18px rgba(0, 230, 118, 0.03) inset;
+  text-align: center;
+  min-width: 160px;
+}
 
-/* Avatar box: fixed square with rounded corners */
-.card-avatar {
-  width: 88px;
-  height: 88px;
-  border-radius: 20px;
-  overflow: hidden; /* hides any part of the image that sticks out */
-  flex: 0 0 88px; /* prevents the avatar from growing or shrinking */
-  background: var(--green-500);
+.counter-value {
+  font-family: Poppins, sans-serif;
+  font-size: 2.2rem;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.counter-label {
+  color: var(--muted-text);
+  margin-top: 6px;
+}
+
+/* Testimonial cards */
+.testimonials {
+  padding: 36px 20px;
+  background: transparent;
+}
+
+.test-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.test-card {
+  background: var(--card-bg);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.6);
+  transform-style: preserve-3d;
+  transition: transform .28s cubic-bezier(.2, .9, .2, 1), box-shadow .28s;
+  color: var(--text);
   display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  position: relative;
+}
+
+.test-card .quote {
+  font-style: italic;
+  margin: 0 0 8px;
+}
+
+.test-card .meta {
+  font-size: .9rem;
+  color: var(--muted-text);
+}
+
+.test-card:hover {
+  box-shadow: 0 20px 48px rgba(8, 20, 12, 0.16), 0 0 26px rgba(0, 230, 118, 0.04);
+}
+
+.test-avatar img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: block;
+}
+
+/* Modal (quick post) - CSS only, still kept for layout if needed */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
   align-items: center;
   justify-content: center;
 }
 
-.card-avatar.round { border-radius: 22px; }
-
-/* Make images fill the avatar box without distortion */
-.card-avatar img {
-  width: 100%;
-  height: 100%;
-  display: block;          /* removes small inline-gap below images */
-  object-fit: cover;      /* crops the image but preserves aspect ratio */
+.modal[aria-hidden="false"] {
+  display: flex;
 }
 
-/* Ensure the text area inside the flex card can shrink properly */
-.card .card-info { min-width: 0; }
-
-/* Title and meta text inside a card */
-.card .title {
-  /* allow long words to wrap instead of pushing the card wider */
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  white-space: normal;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: #fff;
-  margin: 0;
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 12, 6, 0.5);
 }
 
-.card .meta {
-  color: rgba(255,255,255,0.95);
-  font-size: 13px;
-  margin-top: 6px;
-  white-space: normal;
+.modal-panel {
+  position: relative;
+  background: rgba(6, 20, 14, 0.94);
+  padding: 20px;
+  border-radius: 12px;
+  z-index: 62;
+  min-width: 320px;
+  max-width: 480px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.7);
+  color: var(--text);
 }
 
-/* Uncomment this block if you prefer titles to stay on one line and be truncated */
-/*
-.card .title {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.modal-panel h3 {
+  margin-top: 0;
 }
-*/
 
-/* Divider line */
-hr {
+.modal-close {
+  position: absolute;
+  right: 12px;
+  top: 8px;
+  background: transparent;
   border: none;
-  border-top: 3px solid rgba(0,0,0,0.18);
-  margin: 26px 0;
-  width: 100%;
-}
-
-/* -------------------- Responsive tweaks -------------------- */
-@media (max-width: 900px) {
-  .sidebar { display: none; }
-  body { flex-direction: column; }
-  .main { padding: 18px; }
-}
-
-/* End of file */
-
-/* -------------------- Category grid & buttons -------------------- */
-/* A responsive grid for cards inside each category */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 18px;
-  align-items: start;
-  margin-bottom: 18px;
-}
-
-/* Button used to start a trade */
-.btn-trade {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 12px;
-  background: linear-gradient(90deg, var(--green-500), var(--green-300));
-  color: var(--green-900);
-  border: none;
-  border-radius: 8px;
+  font-size: 20px;
   cursor: pointer;
-  font-weight: 700;
-}
-.btn-trade:hover,
-.btn-trade:focus {
-  outline: none;
-  filter: brightness(0.95);
 }
 
-/* Small helper to align actions inside the card */
-.card-actions { margin-top: 8px; }
-
-/* Sidebar category link styles */
-.cat-link {
-  color: inherit;
-  text-decoration: none;
-  display: inline-block;
-  padding: 4px 6px;
-  border-radius: 6px;
-}
-.cat-link:hover, .cat-link:focus {
-  background: rgba(255,255,255,0.04);
+.modal-panel label {
+  display: block;
+  margin-top: 8px;
+  font-size: .95rem;
 }
 
-/* Make anchor clicks smooth when jumping to sections */
-html { scroll-behavior: smooth; }
+.modal-panel input,
+.modal-panel textarea,
+.modal-panel select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 6px;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+}
 
+/* Position quick button fallback */
+@media(max-width:600px) {
+  #quick-post-btn {
+    right: 12px;
+    bottom: 12px;
+    padding: 10px 14px;
+  }
+}
+
+/* Transparent "About" panel (glass + neon accent) - scoped to main only */
+main .about {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: 30px auto;
+  background: rgba(1, 12, 8, 0.32);
+  border: 1px solid rgba(80, 255, 150, 0.06);
+  border-radius: 12px;
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 28px rgba(30, 255, 150, 0.04) inset;
+  color: #eafff0;
+  position: relative;
+  z-index: 6;
+}
+
+main .about .panel {
+  background: linear-gradient(180deg, rgba(6, 30, 20, 0.12), rgba(6, 30, 20, 0.06));
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(60, 255, 150, 0.03);
+}
+
+main .about h2 {
+  margin-top: 0;
+  color: #bffdda;
+  text-shadow: 0 0 10px rgba(30, 255, 150, 0.06);
+}
+
+main .about p {
+  color: rgba(234, 255, 240, 0.92);
+  line-height: 1.6;
+}
+
+/* Hamburger menu styles */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 4px;
+  width: 100%;
+  background: var(--primary, #00e676);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+.menu-toggle.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Responsive nav */
+@media (max-width: 700px) {
+  .main-nav {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: var(--card-bg, #101c16);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    flex-direction: column;
+    gap: 0;
+    padding: 18px 0;
+    min-width: 180px;
+    display: none;
+    z-index: 99;
+  }
+
+  .main-nav.open {
+    display: flex;
+  }
+
+  .main-nav a {
+    padding: 12px 24px;
+    border-bottom: 1px solid rgba(0, 230, 118, 0.08);
+    color: var(--primary, #00e676);
+    font-size: 1.1rem;
+  }
+
+  .main-nav a:last-child {
+    border-bottom: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .header-inner {
+    position: relative;
+  }
+}
+
+/* Sticky Header */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  transition: box-shadow 0.2s;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+}
+
+/* Optional: add a subtle shadow when scrolling */
+.sticky-header.scrolled {
+  box-shadow: 0 4px 24px rgba(0,230,118,0.08), 0 2px 16px rgba(0,0,0,0.18);
+}

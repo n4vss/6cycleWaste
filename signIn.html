@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | 6cycleWaste</title>
+    <link rel="icon" type="image/x-icon" href="assets/icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="registration.css">
+</head>
+<body>
+    <div class="w-full h-screen flex items-center justify-center p-4 bg-black bg-opacity-20">
+        <div class="w-full max-w-md p-6 sm:p-8 lg:p-10 bg-white rounded-2xl shadow-xl">
+            <!-- Logo and Company Name -->
+            <div class="text-center mb-0.1">
+                <a href="index.html">
+                    <img src="assets/logo1.png" alt="Company Logo" class="mb-5 h-20 inline-block">
+                </a>
+            </div>
+
+            <!-- Success Message -->
+            <div id="success-message" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                <strong class="font-bold">Success!</strong>
+                <span class="block sm:inline">You have been logged in.</span>
+            </div>
+
+            <form id="login-form" action="#" method="POST" novalidate>
+                <!-- Username Input -->
+                <div class="mb-4">
+                    <div class="relative">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <input id="username-input" type="text" placeholder="Username or Email" class="w-full pl-12 pr-4 py-3 bg-gray-100 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                    </div>
+                     <div id="username-error" class="text-red-500 text-sm mt-1 error-message"></div>
+                </div>
+
+                <!-- Password Input -->
+                <div class="mb-4">
+                    <div class="relative">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                        <input id="password-input" type="password" placeholder="Password" class="w-full pl-12 pr-16 py-3 bg-gray-100 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                        <button type="button" id="toggle-password" class="absolute right-4 top-1/2 -translate-y-1/2 text-sm font-semibold text-green-600 hover:text-green-800">SHOW</button>
+                    </div>
+                    <div id="password-error" class="text-red-500 text-sm mt-1 error-message"></div>
+                </div>
+                
+                <!-- Remember Me & Forgot Password -->
+                <div class="flex items-center justify-between mb-6 text-sm">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="remember" class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
+                        <label for="remember" class="ml-2 text-gray-600">Remember me</label>
+                    </div>
+                    <a href="#" class="font-medium text-green-600 hover:text-green-800">Forgot Password?</a>
+                </div>
+
+                <!-- Sign In Button -->
+                <button type="submit" class="w-full bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-700 transition duration-300 mb-4">
+                    Sign In
+                </button>
+                
+                <!-- Or Separator -->
+                <div class="flex items-center my-4">
+                    <div class="flex-grow border-t border-gray-300"></div>
+                    <span class="mx-4 text-gray-400 text-sm font-semibold">or</span>
+                    <div class="flex-grow border-t border-gray-300"></div>
+                </div>
+
+                <!-- Social Logins -->
+                <p class="text-center text-sm text-gray-600 mb-4">Sign in using</p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#" class="w-12 h-12 flex items-center justify-center border-2 border-gray-300 rounded-full text-gray-600 hover:bg-gray-100 transition-colors duration-300">
+                        <i class="fab fa-google text-xl"></i>
+                    </a>
+                     <a href="#" class="w-12 h-12 flex items-center justify-center border-2 border-gray-300 rounded-full text-gray-600 hover:bg-gray-100 transition-colors duration-300">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
+                     <a href="#" class="w-12 h-12 flex items-center justify-center border-2 border-gray-300 rounded-full text-gray-600 hover:bg-gray-100 transition-colors duration-300">
+                        <i class="fab fa-apple text-xl"></i>
+                    </a>
+                </div>
+            </form>
+            
+            <!-- Sign Up Link -->
+            <p class="text-center text-sm text-gray-500 mt-8">
+                Don't have an account? <a href="signUp.html" class="font-medium text-green-600 hover:text-green-800">Sign Up</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // --- Password Visibility Toggle ---
+        const passwordInput = document.getElementById('password-input');
+        const togglePasswordButton = document.getElementById('toggle-password');
+
+        togglePasswordButton.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            togglePasswordButton.textContent = (type === 'password') ? 'SHOW' : 'HIDE';
+        });
+
+        // --- Form Validation ---
+        const loginForm = document.getElementById('login-form');
+        const usernameInput = document.getElementById('username-input');
+        const usernameError = document.getElementById('username-error');
+        const passwordError = document.getElementById('password-error');
+        const successMessage = document.getElementById('success-message');
+
+        loginForm.addEventListener('submit', (event) => {
+            // Prevent the default form submission
+            event.preventDefault();
+
+            let isValid = true;
+            
+            // Reset previous errors and hide success message
+            usernameError.textContent = '';
+            passwordError.textContent = '';
+            successMessage.classList.add('hidden');
+            usernameInput.classList.remove('border-red-500', 'ring-red-500');
+            passwordInput.classList.remove('border-red-500', 'ring-red-500');
+
+            // Validate Username
+            if (usernameInput.value.trim() === '') {
+                usernameError.textContent = 'Username is required.';
+                usernameInput.classList.add('border-red-500', 'ring-red-500');
+                isValid = false;
+            }
+
+            // Validate Password
+            if (passwordInput.value.trim() === '') {
+                passwordError.textContent = 'Password is required.';
+                passwordInput.classList.add('border-red-500', 'ring-red-500');
+                isValid = false;
+            }
+
+            // If form is valid, you can proceed with submission
+            if (isValid) {
+                console.log('Form is valid. Submitting...');
+                // Here you would typically send the data to a server
+                
+                // Show success message
+                successMessage.classList.remove('hidden');
+                loginForm.reset(); // Clear the form
+
+                // Optional: hide the success message after a few seconds
+                setTimeout(() => {
+                    successMessage.classList.add('hidden');
+                }, 3000);
+            }
+        });
+
+    </script>
+</body>
+</html>
+
