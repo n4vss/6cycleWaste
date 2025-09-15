@@ -30,22 +30,7 @@ Arrange a Swap: Use the built-in messenger to agree on the details of the exchan
 
 Complete the Barter: Meet up, swap your items, and mark the trade as complete!
 
-🛠️ Tech Stack
-This project is built with a modern and robust technology stack to ensure a seamless user experience.
 
-Frontend: (e.g., React, Angular, Vue.js)
 
-Backend: (e.g., Node.js, Express, Firebase)
 
-Database: (e.g., Firestore, MongoDB)
-
-Authentication: (e.g., Firebase Auth)
-
-(Note: You can replace the examples above with the actual technologies you are using.)
-
-🚀 Getting Started
-To get a local copy up and running, follow these simple steps.
-
-Prerequisites
-npm
 
